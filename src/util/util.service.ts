@@ -7,7 +7,7 @@ export class UtilService {
 
   async cacheList(key: string, data: any[], ttl: number) {
     const pipleline = this.redis.pipeline();
-    data.forEach(async (element) =>
+    data.forEach( (element) =>
       pipleline.rpush(key, JSON.stringify(element)),
     );
     pipleline.expire(key, ttl);
